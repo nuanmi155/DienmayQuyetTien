@@ -1,0 +1,74 @@
+﻿@model IEnumerable<dmquyettien.Models.BangSanPham>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Thêm sản phẩm</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã sản phẩm
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.GiaGoc)*@
+            Giá gốc
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.GiaGop)*@
+            Giá gốc
+        </th>
+        <th>
+            Số lượng tồn
+            @*@Html.DisplayNameFor(model => model.SoLuongTon)*@
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.LoaiSanPham.TenLoai)*@
+            Loại sản phẩm
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaGoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaGop)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuongTon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoai)
+        </td>
+        <td>
+            
+            <a href="@Url.Action("Edit", new { id = item.id})" class="btn btn-info">Sửa</a>
+            <a href="@Url.Action("Details", new { id = item.id })" class="btn btn-success">Chi tiết</a>
+            <a href="@Url.Action("Delete", new { id = item.id})" class="btn btn-danger">Xóa</a>
+        </td>
+    </tr>
+}
+
+</table>
